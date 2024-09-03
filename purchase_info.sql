@@ -1,15 +1,15 @@
 CREATE OR REPLACE VIEW purchases_info AS
 SELECT
-	purchase_id,
+    purchase_id,
     student_id,
     purchase_type,
     date_start,
-	IF(date_refunded IS NULL, date_end, date_refunded) AS date_end
+    IF(date_refunded IS NULL, date_end, date_refunded) AS date_end
     
 -- Subquery to calculate 'date_start' and 'date_end'
 FROM
 (SELECT 
-	purchase_id,
+    purchase_id,
     student_id,
     purchase_type, -- Type of purchase (0 = monthly, 1 = quarterly, 2 = yearly)
     date_purchased AS date_start,
